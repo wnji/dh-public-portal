@@ -1,0 +1,64 @@
+server:
+  address: 192.168.1.45
+  port: 9093
+  connection-timeout: 10000
+  servlet:
+    context-path: /dh-public
+  tomcat:
+    max-threads: 400    
+    max-connections: 100
+jasypt:
+    encryptor:
+      password: public
+    jasyptStringEncryptor: EnableEncryptablePropertiesConfiguration  
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:  
+      multipart:
+        max-file-size: 100MB
+        max-request-size: 100MB
+  devtools:
+    restart:
+       #热部署生效
+      enabled: true
+      #设置重启的目录
+      additional-paths: src/main/java
+      #classpath目录下的WEB-INF文件夹内容修改不重启
+      exclude: classpath:*
+#  activemq:
+#    broker-url: tcp://18.163.8.204:61616
+  datasource:
+    url: jdbc:mysql://118.25.152.36:3306/health_care_professional
+    username: root
+    password: avenroot
+    driver-class-name: com.mysql.jdbc.Driver
+           
+logging:
+  pattern:
+    console: "%d - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: /opt/dh-java/log/server.log
+  level:
+    org.springframework: WARN
+    com.blkchainsolutions: debug
+    org.springframework.security: INFO
+
+ogcio:
+  domainUrl: http://192.168.1.23:8080/#/
+  jmshost: tcp://18.163.8.204:61616
+  chainUrl: http://18.163.180.75:3004
+  ipfsDownload: http://35.175.138.181:8080/
+  publicIpfsDownload: http://35.175.138.181:8080/
+  emailPW: ENC(zSHIXO+kwE4EQ4NwDGs4Rda6CGSgvfMb)
+  emailHost: mail.blkchainsolution.com
+  emailPort: 443
+  emailUsername: do-not-reply@blkchainsolution.com
+  ogcioEmailURL: http://10.104.19.1:2888/api/email/send
+  ogcioEmailUsername: ipdadmin@uat.cmmp.gov.hk
+  emailSignature: Intellectual Property Department (DH-PUBLIC)
